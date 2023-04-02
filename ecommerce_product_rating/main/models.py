@@ -1,6 +1,11 @@
 from django.db import models
 
 
+# Banner
+class Banner(models.Model):
+    img=models.CharField(max_length=100)
+    alt_text=models.CharField(max_length=300)
+
 #Category 
 class Category(models.Model):
     title=models.CharField(max_length=100)
@@ -47,3 +52,29 @@ class Product(models.Model):
     
     def __str__(self):
         return self.title
+
+
+
+# ProductAttribute
+class ProductAttribute(models.Model):
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    color=models.ForeignKey(Color,on_delete=models.CASCADE)
+    size=models.ForeignKey(Size,on_delete=models.CASCADE)
+    price=models.PositiveIntegerField(default=0)
+    # image=models.ImageField(upload_to="product_imgs/",null=True)
+
+    # class Meta:
+    #     verbose_name_plural='7. ProductAttributes'
+
+    def __str__(self):
+        return self.product.title
+
+    # def image_tag(self):
+    #     return mark_safe('<img src="%s" width="50" height="50" />' % (self.image.url))
+
+# class CartOrder(models.Model):
+#     user=models.ForeignKey(User,on_delete=models.CASCADE)
+#     total_amt=models.FloatField()
+#     paid_status=models.BooleanField(default=False)
+#     order_dt=models.DateTimeField(auto_now_add=True)
+#     order_status=models.CharField(choices=status_choice,default='process',max_length=150)
