@@ -1,75 +1,83 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <!-- Home Slider -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    {% for banner in banners %} {% if forloop.counter == 1 %}
-    <li
+  <!-- <ol class="carousel-indicators"> -->
+    <!-- {% for banner in banners %} {% if forloop.counter == 1 %} -->
+    <!-- <li
       data-target="#carouselExampleIndicators"
       data-slide-to="{{forloop.counter}}"
       class="active"
-    ></li>
-    {% else %}
-    <li
+    ></li> -->
+    <!-- {% else %} -->
+    <!-- <li
       data-target="#carouselExampleIndicators"
       data-slide-to="{{forloop.counter}}"
-    ></li>
-    {% endif %} {% endfor %}
-  </ol>
-  <div class="carousel-inner">
+    ></li> -->
+    <!-- {% endif %} {% endfor %} -->
+  <!-- </ol> -->
+  <!-- <div class="carousel-inner">  this part is commented as it is not showing the banner images written  below for the same.
     {% for banner in banners %} {% if forloop.counter == 1 %}
     <div class="carousel-item active">
       {% else %}
-      <div class="carousel-item">
-        {% endif %}
-        <img src="{.//media/images/banners/1.jpg}" class="d-block w-100" alt="..." />
-      </div>
-      {% endfor %}
+      <img src="{% static '/media/images/banners/1.jpg' %}" class="d-block w-100"/>
     </div>
-    <a
-      class="carousel-control-prev"
-      href="#carouselExampleIndicators"
-      role="button"
-      data-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a
-      class="carousel-control-next"
-      href="#carouselExampleIndicators"
-      role="button"
-      data-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+    <div class="carousel-item">
+      {% endif %}
+      <img
+        src="{% static '/media/images/banners/2.jpg' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="{% static '/media/images/banners/3.jpg' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    {% endfor %}
+  </div> -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+           <img src="{% static '/media/images/banners/1.jpg' %}" style="height: 300px;" class="d-block w-100"/>
+    </div>
+     <div class="carousel-item">
+      <img src="{% static '/media/images/banners/1_.jpg' %}" style="height: 300px;" class="d-block w-100"/>
+ </div>
+    <div class="carousel-item">
+         <img src="{% static '/media/images/banners/3.jpg' %}" style="height: 300px;" class="d-block w-100"/>
+   </div>
+</div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselExampleIndicators"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselExampleIndicators"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
 <main class="container my-4">
   <!-- Featured Products -->
   <h3 class="my-4 border-bottom pb-1">Featured Products</h3>
   <div class="row">
-    {% for product in data %}
     <div class="col-md-3 mb-4">
       <div class="card shadow">
-        <!-- <a href="/product/{{product.slug}}/{{product.id}}"
-          ><img
-            src="/media/{{product.productattribute_set.first.image}}"
-            class="card-img-top"
-            alt="{{product.title}}"
-        /></a> -->
+        <img src="{% static '/media/images/1.jpg' %}"
         <div class="card-body">
-          <h5 class="card-text">
-            <!-- <a href="/product/{{product.slug}}/{{product.id}}"
-              >{{product.title}}</a
-            > -->
-          </h5>
-          <h6>
-            <!-- $
-            <span class="product-price-{{product.id}}"
-              >{{product.productattribute_set.first.price}}</span
-            > -->
-          </h6>
+          <h6 class="card-text"><a href="#">Milton Bottle</a></h6>
+          <h6></h6>
         </div>
         <div class="card-footer">
           <!-- {{product.productattribute_set.first.color.title}} -->
@@ -93,23 +101,17 @@
             type="hidden"
             class="product-title-{{product.id}}"
             value="{{product.title}}"
-          />
-          <button
-            class="btn btn-sm btn-primary add-to-cart"
-            data-index="{{product.id}}"
-          > -->
+          /> -->
+          <button class="btn btn-sm btn-primary add-to-cart">
             <i class="fa fa-shopping-cart"></i>
           </button>
           {% if user.is_authenticated %}
-          <!-- <button
-            class="btn btn-sm btn-danger add-wishlist"
-            data-product="{{product.id}}"
-          > -->
+          <button class="btn btn-sm btn-danger add-wishlist">
             <i class="fa fa-heart"></i>
           </button>
           {% else %}
-          <button class="btn btn-sm btn-danger disabled">
-            <i class="fa fa-heart"></i>
+          <button class="btn btn-sm btn-danger">
+            <!-- <i class="fa fa-heart btn-danger"></i> -->
           </button>
           {% endif %}
           <span class="float-right">
@@ -119,10 +121,9 @@
         </div>
       </div>
     </div>
-    {% endfor %}
   </div>
   <p class="my-4 text-center">
-    <a  class="btn btn-dark btn-sm"
+    <a class="btn btn-dark btn-sm"
       >All Products <i class="fa fa-long-arrow-alt-right"></i
     ></a>
   </p>
