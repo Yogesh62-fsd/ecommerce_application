@@ -7,6 +7,11 @@ def home(request):
     return render(request,'index.html')
 
 
+# Category
+
+def category_list(request):
+    return render(request,'category_list.html')
+
 # def home(request):
 # 	banners=Banner.objects.all().order_by('-id')
 # 	data=Product.objects.filter(is_featured=True).order_by('-id')
